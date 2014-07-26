@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "/cities_by_state" => "cities#cities_by_state"
   get 'welcome/index'
 
   get 'welcome/aboutUs'
