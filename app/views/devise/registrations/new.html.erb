@@ -5,15 +5,7 @@
 
   <%= render "form" %>
  
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= collection_select(:state ,:id, State.all, :id, :name, :include_blank => 'SELECT A STATE') %>
-  </div>
-
-  <div class="field">
-   <%= f.label :city %><br />
-   <%= f.collection_select :city_id, [], :id, :name, :include_blank => 'SELECT FIRST STATE' %>
-  </div>
+  
 
   <div><%= f.label :password %><br />
   <%= f.password_field :password, autocomplete: "off" %></div>

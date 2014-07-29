@@ -31,17 +31,17 @@
   <%= f.text_area :description, autofocus: false %></div>
   <div class="field">
   <%= f.label :state_id %><br>
-  <%= f.collection_select :state, :id, State.all, :id, :name,
+  <%= f.collection_select :state_id, State.all, :id, :name,
       {include_blank: true},
       { data: {
           dynamic_selectable_url: dynamic_select_cities_path(':state_id'),
-          dynamic_selectable_target: '#event_state_id'
+          dynamic_selectable_target: '#user_city_id'
         }
       } %>
 </div>
 <div class="field">
   <%= f.label :city_id %><br>
-  <%= f.collection_select :city_id, @event.state.try(:cities) || [], :id, :name, :include_blank => true  %>
+  <%= f.collection_select :city_id, @user.state.try(:cities) || [], :id, :name, :include_blank => true  %>
 </div>
   
 <% end %>
