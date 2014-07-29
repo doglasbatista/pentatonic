@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get "/cities_by_state" => "cities#cities_by_state"
+  resources :products
+
+  #get "/cities_by_state" => "cities#cities_by_state"
   get 'welcome/index'
 
   get 'welcome/aboutUs'
@@ -59,4 +61,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  namespace :dynamic_select do
+    get ':state_id/cities', to: 'cities#index', as: 'cities'
+  end
 end

@@ -1,14 +1,15 @@
+module DynamicSelect
 class CitiesController < ApplicationController
-  before_action :set_city, only: [:show, :edit, :update, :destroy]
-  def cities_by_state
-      state_id = params[:id].to_i
-      cities = City.where(:state_id => state_id)
-      cty = []
-      cities.each do |city|
-        cty << {:id => city.id, :n => city.name}
-      end
-      render :json => {:cty => cty.compact}.as_json
-    end
+  before_action :set_city, only: [:show, :edit, :update, :destroy]  
+  
+  respond_to :json
+
+  def index
+    @cities = City.where(:state_id => params[:state_id])
+    respond_with(@cities)
+  end
+  
+end
   # GET /cities
   # GET /cities.json
   def index
