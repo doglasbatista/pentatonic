@@ -3,7 +3,22 @@ class ProductsController < ApplicationController
 
   
   def index
-    @products = Product.order("title").page(params[:page]).per(5)
+
+    order = params[:order]
+    if order
+      order = eval(order)
+    end
+
+    if order == 1
+      @products = Product.order("id desc").page(params[:page]).per(5)
+    elsif order == 2
+      @products = Product.order("price").page(params[:page]).per(5)
+    elsif order == 3
+      @products = Product.order("price desc").page(params[:page]).per(5)
+    else
+      @products = Product.order("title").page(params[:page]).per(5)
+    end
+
   end
 
   
@@ -60,13 +75,13 @@ class ProductsController < ApplicationController
   end
 
   private
-    
-    def set_product
-      @product = Product.find(params[:id])
-    end
 
-    
-    def product_params
-      params.require(:product).permit(:title, :price, :description, :style_id, :category_id, :user_id)
-    end
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+
+  def product_params
+    params.require(:product).permit(:title, :price, :description, :style_id, :category_id, :user_id)
+  end
 end

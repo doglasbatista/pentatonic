@@ -1,11 +1,57 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
 
-  <%= render "form" %>
- 
-  
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>  
+  <div><%= f.label :nickname %><br />
+  <%= f.text_field :nickname, autofocus: true %></div>
+
+  <div><%= f.label :name %><br />
+  <%= f.text_field :name, autofocus: false %></div>
+
+  <div><%= f.label :surname %><br />
+  <%= f.text_field :surname, autofocus: false %></div>
+
+  <div class="field">
+    <div><%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: false %></div>
+  </div>
+
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= collection_select(:state ,:id, State.all, :id, :name, :include_blank => 'Selecione um estado') %>
+  </div>
+
+  <div class="field">
+  <% if f.object.persisted? %>
+   <%= f.select :city_id, City.where(:state_id => f.object.city.state_id).collect { |c| [c.name, c.id] }, { :include_blank => 'Selecione um estado antes' }, {class: "form-control" } %><br />
+   <% else %>
+   <%= f.collection_select :city_id, [], :id, :name, { :include_blank => 'Selecione um estado antes' }, { class: "form-control"} %>
+   <% end -%>
+</div>  
+<% if f.object.persisted? %>
+<script>
+$('#state_id').find("option[value=#{f.object.city.state_id}]").attr('selected', true);
+</script>
+<% end %>
+
+  <div class="field">
+    <div><%= f.label :birth%><br />
+    <%= f.date_select :birth, :start_year => Time.now.year - 100, 
+    :end_year => Time.now.year, autofocus: false %></div>
+  </div>
+
+  <div><%= f.label :cpf %><br />
+  <%= f.text_field :cpf, autofocus: false %></div>
+
+  <div><%= f.label :rg %><br />
+  <%= f.text_field :rg, autofocus: false %></div>
+
+  <div><%= f.label :address %><br />
+  <%= f.text_field :address, autofocus: false %></div>
+
+  <div><%= f.label :description %><br />
+  <%= f.text_area :description, autofocus: false %></div>
 
   <div><%= f.label :password %><br />
   <%= f.password_field :password, autocomplete: "off" %></div>
@@ -17,6 +63,7 @@
 <% end %>
 
 
-
-
 <%= render "devise/shared/links" %>
+<%= render "form" %>
+
+

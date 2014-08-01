@@ -1,0 +1,21 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+<div><%= f.label :nickname %><br />
+<div class="field">
+    <%= f.label :state %><br />
+    <%= collection_select(:state ,:id, State.all, :id, :name, :include_blank => 'Selecione um estado') %>
+  </div>
+
+  <div class="field">
+  <% if f.object.persisted? %>
+   <%= f.select :city_id, City.where(:state_id => f.object.city.state_id).collect { |c| [c.name, c.id] }, { :include_blank => 'Selecione um estado antes' }, {class: "form-control" } %><br />
+   <% else %>
+   <%= f.collection_select :city_id, [], :id, :name, { :include_blank => 'Selecione um estado antes' }, { class: "form-control"} %>
+   <% end -%>
+</div>  
+<% if f.object.persisted? %>
+<script>
+$('#state_id').find("option[value=#{f.object.city.state_id}]").attr('selected', true);
+</script>
+<% end %>
+<% end %>
