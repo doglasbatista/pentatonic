@@ -24,13 +24,22 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :style %><br />
-    <%= collection_select(:style ,:id, Style.all, :id, :name, :include_blank => 'Selecione um estilo') %>
+   <%= f.label :style %><br />
+   <%= f.collection_select :style_id, Style.all, :id, :name, :include_blank => 'Selecione o Estilo' %>
   </div>
   <div class="field">
-    <%= f.label :category %><br />
-    <%= collection_select(:category ,:id, Category.all, :id, :name, :include_blank => 'Selecione uma categoria') %>
+   <%= f.label :category %><br />
+   <%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => 'Selecione uma Categoria' %>
   </div>
+  <div class="field">
+   <%= f.label :cover %><br />
+    <%= f.file_field :cover %>  
+  </div>
+  <div class="field">
+   <%= f.label :file %><br />
+    <%= f.file_field :file %>  
+  </div>
+  
   
   <div class="actions">
     <%= f.submit %>

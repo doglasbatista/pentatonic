@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Cover:</strong></br>
+  <%= image_tag @product.cover(:small) %>
+</p>
+<p>
   <strong>Title:</strong>
   <%= @product.title %>
 </p>
@@ -17,18 +21,20 @@
 
 <p>
   <strong>Style:</strong>
-  <%= @product.style %>
+  <%= @product.style.name %>
 </p>
 
 <p>
   <strong>Category:</strong>
-  <%= @product.category %>
+  <%= @product.category.name %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @product.user %>
+  <%= @product.user.name %> <%= @product.user.surname %>
 </p>
+
+
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
