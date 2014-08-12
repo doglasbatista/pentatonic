@@ -6,12 +6,13 @@ class ProductsController < ApplicationController
     file_path = @product.file_file_name
     if !file_path.nil?
      send_file "#{Rails.root}/public/system/file/#{@product.id}/original/#{file_path}", :x_sendfile => true 
-    else 
+   else 
      redirect_to products_url
-    end
-  end
-  
-def index
+   end
+ end
+ 
+ def index
+  @search_query = params[:q]
 
   order = params[:order]
 
@@ -20,13 +21,13 @@ def index
   end
 
   if order == 1
-    @products = Product.order("id desc").page(params[:page]).per(5)
+    @products = Product.search(@search_query).order("id desc").page(params[:page]).per(5)
   elsif order == 2
-    @products = Product.order("price").page(params[:page]).per(5)
+    @products = Product.search(@search_query).order("price").page(params[:page]).per(5)
   elsif order == 3
-    @products = Product.order("price desc").page(params[:page]).per(5)
+    @products = Product.search(@search_query).order("price desc").page(params[:page]).per(5)
   else
-    @products = Product.order("title").page(params[:page]).per(5)
+    @products = Product.search(@search_query).order("title").page(params[:page]).per(5)
   end
 
 end
@@ -84,9 +85,18 @@ def destroy
   end
 end
 
-private
+private 
+ # ensure that there are no line items referencing this product 
+ def ensure_not_referenced_by_any_line_item 
+   if line_items.empty? 
+     return true 
+   else 
+     errors.add(:base, 'Line Items present') 
+     return false 
+   end 
+ end
 
-def set_product
+ def set_product
   @product = Product.find(params[:id])
 end
 

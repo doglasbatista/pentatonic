@@ -5,8 +5,14 @@
   <li><%= link_to 'maior preco', products_path(order: 3) %></li>
 </ul>
 
-
-
+<%= render 'search' %>
+<h1>
+  <% if @search_query.present? %>
+  <%= t '.search_results' %>
+  <% else %>
+  <%= t '.title' %>
+  <% end %>
+</h1>
 
 
 <table>
@@ -26,21 +32,22 @@
 
   <tbody>
     <% @products.each do |product| %>
-      <tr>
-        <td><%= image_tag product.cover.url(:small) %></td>
-        <td><%= product.title %></td>
-        <td><%= product.price %></td>
-        <td><%= product.description %></td>
-        <td><%= product.style.name %></td>
-        <td><%= product.category.name %></td>
-        <td><%= product.user.name %> <%= product.user.surname %></td>
-        <td><%= product.file_file_name %></td></td>
-        <% if belongs_to_user(product) %>
-          <td><%= link_to 'Show', product %></td>
-          <td><%= link_to 'Edit', edit_product_path(product) %></td>
-          <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end -%>
-      </tr>
+    <tr>
+      <td><%= image_tag product.cover.url(:small) %></td>
+      <td><%= product.title %></td>
+      <td><%= product.price %></td>
+      <td><%= product.description %></td>
+      <td><%= product.style.name %></td>
+      <td><%= product.category.name %></td>
+      <td><%= product.user.name %> <%= product.user.surname %></td>
+
+      <% if belongs_to_user(product) %>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end -%>
+    </tr>
+
     <% end %>
   </tbody>
 </table>

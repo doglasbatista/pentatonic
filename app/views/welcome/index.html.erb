@@ -1,1 +1,21 @@
-<%= link_to "produto", products_path %>
+<%= link_to "product", products_path %>
+<%= render 'products/search' %>
+
+  
+<h1>Your Pragmatic Catalog</h1>
+
+<% cache ['store', Product.last] do %>
+  <% @products.each do |product| %>
+    <% cache ['entry', product] do %>
+      <div class="entry">
+        <%= link_to (image_tag product.cover.url(:small)), product %>
+        <h3><%= product.title %></h3>
+        <%= sanitize(product.description) %>
+        <div class="price_line">
+          <span class="price"><%= number_to_currency(product.price) %> </span>
+          <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

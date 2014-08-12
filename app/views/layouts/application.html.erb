@@ -7,9 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= link_to "PENTATONIC", root_path %> </br></br>
-  
+  <%= link_to "PENTATONIC", welcome_path %> </br></br>
+  <%= link_to "Seu Carrinho", current_cart %>
+  <br/>
   <% if current_user %>
+  
       Bem vindo <%= current_user.nickname %>
       <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> / <%= link_to "Edit", edit_user_registration_path %>
     <% else %>

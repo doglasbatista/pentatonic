@@ -23,17 +23,18 @@
   </div>
 
   <div class="field">
+  <%= f.label :city %><br />
   <% if f.object.persisted? %>
    <%= f.select :city_id, City.where(:state_id => f.object.city.state_id).collect { |c| [c.name, c.id] }, { :include_blank => 'Selecione um estado antes' }, {class: "form-control" } %><br />
    <% else %>
    <%= f.collection_select :city_id, [], :id, :name, { :include_blank => 'Selecione um estado antes' }, { class: "form-control"} %>
    <% end -%>
-</div>  
-<% if f.object.persisted? %>
-<script>
-$('#state_id').find("option[value=#{f.object.city.state_id}]").attr('selected', true);
-</script>
-<% end %>
+  </div>  
+  <% if f.object.persisted? %>
+    <script>
+    $('#state_id').find("option[value=#{f.object.city.state_id}]").attr('selected', true);
+    </script>
+  <% end %>
 
   <div class="field">
     <div><%= f.label :birth%><br />
