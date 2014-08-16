@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805210946) do
+ActiveRecord::Schema.define(version: 20140815215714) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 20140805210946) do
   create_table "users", force: true do |t|
     t.string   "nickname"
     t.string   "name"
-    t.string   "surname"
     t.string   "cpf"
     t.string   "rg"
     t.string   "address"
@@ -101,7 +100,6 @@ ActiveRecord::Schema.define(version: 20140805210946) do
     t.integer  "city_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "state_id"
   end
 
   add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree
@@ -109,6 +107,5 @@ ActiveRecord::Schema.define(version: 20140805210946) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["nickname"], name: "index_users_on_nickname", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["state_id"], name: "index_users_on_state_id", using: :btree
 
 end

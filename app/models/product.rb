@@ -12,7 +12,8 @@ class Product < ActiveRecord::Base
 
   has_attached_file :file
   # validates_attachment_presence :file
-  validates_attachment_content_type :file, :content_type => [ 'application/zip', 'application/rar']  
+  validates_attachment_content_type :file, :content_type => [ 'application/zip', 'application/rar', 
+                                    'application/x-rar']  
   
   def ensure_not_referenced_by_any_line_item
     if line_items.empty?
@@ -25,13 +26,12 @@ class Product < ActiveRecord::Base
 
   def self.search(query)
     if query.present?
-      joins(:style).joins(:category).joins(:user).where(['products.title LIKE :query OR
+      joins(:style).joins(:category).joins(:user).where("products.title LIKE :query OR
         categories.name LIKE :query OR
         styles.name LIKE :query OR
         users.name LIKE :query OR
-        users.surname LIKE :query OR
-        products.description LIKE :query', 
-        query: "%#{query}%"])
+        products.price LIKE :query OR
+        products.description LIKE :query", query: "%#{query}%")
     else
       all
       #scoped

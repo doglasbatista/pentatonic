@@ -3,8 +3,7 @@
     attributes:
       user:
         nickname: 
-        name: Nome
-        surname: Sobrenome
+        name: Nome Completo
         cpf: Cpf
         rg: Rg
         state: Estado
@@ -15,12 +14,12 @@
         current_password: Senha Atual
         current_sign_in_at: 
         email: Email
-        last_sign_in_at: 
+        last_sign_in_at: Último acesso em
         password: Senha
         password_confirmation: Confirmar Senha 
         remember_me: 
     models:
-      user: 
+      user: Usuário
   devise:
     confirmations:
       confirmed: 
@@ -29,15 +28,15 @@
       send_instructions: 
       send_paranoid_instructions: 
     failure:
-      already_authenticated: 
-      inactive: 
-      invalid: 
-      invalid_token: 
-      locked: 
-      not_found_in_database: 
-      timeout: 
-      unauthenticated: 
-      unconfirmed: 
+      already_authenticated: Já autenticado
+      inactive: Inativo
+      invalid: Invalido
+      invalid_token: Token invalido
+      locked: Bloqueado
+      not_found_in_database: Não encontrado no bBanco de dados
+      timeout: Tempo limite
+      unauthenticated: Sem autenticação
+      unconfirmed: Sem confirmação
     mailer:
       confirmation_instructions:
         action: Confirmar minha conta
@@ -58,14 +57,9 @@
         message: Sua conta foi bloqueada devido ao excessivo número de tentativas acesso inválidas.
         subject: Instruções de desbloqueio
     omniauth_callbacks:
-      failure: 
-      success: 
+      failure: Falha
+      success: Sucesso
     passwords:
-      edit:
-        change_my_password: 
-        change_your_password: 
-        confirm_new_password: 
-        new_password: 
       new:
         forgot_your_password: Esqueceu sua senha?
         send_me_reset_password_instructions: Enviar instruções para redefinição da senha
@@ -80,15 +74,15 @@
         are_you_sure: Você tem certeza?
         cancel_my_account: Cancelar minha conta
         currently_waiting_confirmation_for_email: 
-        leave_blank_if_you_don_t_want_to_change_it: deixe em branco caso não queira alterá-la
+        leave_blank_if_you_don_t_want_to_change_it: Deixe em branco caso não queira alterá-la
         title: Editar %{resource}
         unhappy: 
         update: 
-        we_need_your_current_password_to_confirm_your_changes: precisamos da sua senha atual para confirmar suas mudanças
+        we_need_your_current_password_to_confirm_your_changes: Precisamos da sua senha atual para confirmar suas mudanças
       new:
         sign_up: Inscrever-se
-      signed_up: 
-      signed_up_but_inactive: 
+      signed_up: Inscrito
+      signed_up_but_inactive: Inscrito, mas inativo
       signed_up_but_locked: 
       signed_up_but_unconfirmed: 
       update_needs_confirmation: 
@@ -96,11 +90,11 @@
     sessions:
       new:
         sign_in: Login
-      signed_in: 
-      signed_out: 
+      signed_in: Logado
+      signed_out: Deslogado
     shared:
       links:
-        back: 
+        back: Voltar
         didn_t_receive_confirmation_instructions: Não recebeu instruções de confirmação?
         didn_t_receive_unlock_instructions: Não recebeu instruções de desbloqueio?
         forgot_your_password: Equeceu sua senha?
@@ -110,14 +104,14 @@
     unlocks:
       new:
         resend_unlock_instructions: Renviar instruções de desbloqueio
-      send_instructions: 
+      send_instructions: Enviar as instruções
       send_paranoid_instructions: 
-      unlocked: 
+      unlocked: Desbloqueado
   errors:
     messages:
-      already_confirmed: 
-      confirmation_period_expired: 
-      expired: 
-      not_found: 
-      not_locked: 
-      not_saved: 
+      already_confirmed: Já confirmado
+      confirmation_period_expired: Período de confirmação expirado
+      expired: Expirado
+      not_found: Não encontrado
+      not_locked: Não bloqueado
+      not_saved: Não salvo

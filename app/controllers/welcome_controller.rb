@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @products = Product.order(:category_id)
+    @products = Product.take(5)
   end
 
   def aboutUs

@@ -23,6 +23,8 @@
     destroy: 'Você tem certeza que quer remover?'
     
   products:
+    search:
+      search_for: 'Buscar por...'
     new:
       title: 'Cadastro de produto'
     edit:
@@ -42,7 +44,7 @@
 
   activerecord:
     models:
-      product: Quarto
+      product: Produto
     attributes:
       product:
         title: Título
