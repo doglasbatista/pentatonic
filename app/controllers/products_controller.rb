@@ -1,5 +1,17 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :require_authentication, only: [:edit, :destroy, :new]
+  def require_authentication
+    unless current_user
+      redirect_to new_user_session_path, alert: 'Precisa esta logado!'
+    end
+  end
+  def require_no_authentication
+    if current_user
+      redirect_to root_path,
+      notice: t('flash.notice.already_logged_in')
+    end
+  end
 
   def file_download
     @product = Product.find(params[:id])
@@ -44,6 +56,7 @@ end
 
 
 def edit
+  
 end
 
 

@@ -1,15 +1,10 @@
-
 <h2>Your Pragmatic Cart</h2>
 <ul>
 
   <% @cart.line_items.each do |item| %>
-    <li><%= item.quantity %> &times; <%= item.product.title %> valor <%= item.product.price %> <%= link_to 'Remover', line_item_path(item), method: :delete %></li>  
-
-
-  
-    
+    <li><%= item.quantity %> &times; <%= item.product.title %> valor <%= item.product.price %> <%= link_to 'Remover', line_item_path(item), method: :delete, :class => 'btn btn-mini' %></li>   
   <% end %>
-  TOTAL:      <%= @cart.total_price %>
-  </br><%= link_to 'Continuar comprando', welcome_path , class: 'btn-simples' %>
-  <%= link_to 'Esvaziar carrinho', @cart, method: :delete, data: {confirm: 'Tem certeza?'}, class: 'btn-simples'  %>
+  TOTAL: <%= @cart.total_price %>
+  </br><%= link_to 'Continuar comprando', welcome_path , :class => 'btn btn-mini' %>
+  <%= link_to 'Esvaziar carrinho', @cart, method: :delete, data: {confirm: 'Tem certeza?'}, :class => 'btn btn-mini'  %>
 </ul>

@@ -3,11 +3,16 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>  
-  <div><%= f.label :nickname %><br />
-  <%= f.text_field :nickname, autofocus: true %></div>
+  <div class="field">
+    <%= f.label :nickname %><br />
+    <%= f.text_field :nickname, autofocus: false %>
+  </div>
 
-  <div><%= f.label :name %><br />
-  <%= f.text_field :name, autofocus: false %></div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: false, style: 'display: inline-block' %>
+    <%= error_tag @user, :name %>
+  </div>
 
   <div class="field">
     <div><%= f.label :email %><br />
@@ -24,7 +29,7 @@
   <% if f.object.persisted? %>
    <%= f.select :city_id, City.where(:state_id => f.object.city.state_id).collect { |c| [c.name, c.id] }, { :include_blank => 'Selecione um estado antes' }, {class: "form-control" } %><br />
    <% else %>
-   <%= f.collection_select :city_id, [], :id, :name, { :include_blank => 'Selecione um estado antes' }, { class: "form-control"} %>
+   <%= f.collection_select :city_id, [], :id, :name, { :include_blank => '' }, { class: "form-control"} %>
    <% end -%>
   </div>  
   <% if f.object.persisted? %>

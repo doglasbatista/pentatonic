@@ -24,7 +24,7 @@
 
   <div class="field">
   <% if f.object.persisted? %>
-   <%= f.select :city_id, City.where(:state_id => f.object.city.state_id).collect { |c| [c.name, c.id] }, { :include_blank => 'Selecione um estado antes' }, {class: "form-control" } %><br />
+   <%= f.select :city_id, City.where(:state_id => f.object.city.state_id).collect { |c| [c.name, c.id] }, { :include_blank => '...' }, {class: "form-control" } %><br />
    <% else %>
    <%= f.collection_select :city_id, [], :id, :name, { :include_blank => 'Selecione um estado antes' }, { class: "form-control"} %>
    <% end -%>

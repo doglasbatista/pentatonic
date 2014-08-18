@@ -33,7 +33,7 @@
       invalid: Invalido
       invalid_token: Token invalido
       locked: Bloqueado
-      not_found_in_database: Não encontrado no bBanco de dados
+      not_found_in_database: Não encontrado no banco de dados
       timeout: Tempo limite
       unauthenticated: Sem autenticação
       unconfirmed: Sem confirmação
@@ -78,7 +78,7 @@
         title: Editar %{resource}
         unhappy: 
         update: 
-        we_need_your_current_password_to_confirm_your_changes: Precisamos da sua senha atual para confirmar suas mudanças
+        we_need_your_current_password_to_confirm_your_changes: Precisamos da sua senha atual para confirmar suas alterações
       new:
         sign_up: Inscrever-se
       signed_up: Inscrito
@@ -90,8 +90,8 @@
     sessions:
       new:
         sign_in: Login
-      signed_in: Logado
-      signed_out: Deslogado
+      signed_in: Logado com sucesso
+      signed_out: Deslogado com sucesso
     shared:
       links:
         back: Voltar
