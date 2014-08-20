@@ -47,6 +47,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
 
           </a>
           <%= link_to "Pentatonic", welcome_path, :class => 'brand' %>
@@ -54,14 +56,13 @@
             <ul class="nav">
               <li><%= link_to "Produtos", products_path  %></li>
               <li><%= link_to "Seu Carrinho", current_cart %></li>
-              <li><%= link_to "Link3", "/path3" %></li>
+              <li><%= render 'products/search' %></li>
               <% if current_user %>
-              <li>Bem vindo <%= current_user.nickname %></li>
-              <li><%= link_to "Sair", destroy_user_session_path, method: :delete %> </li>
-              <li><%= link_to "Editar Perfil", edit_user_registration_path %></li>
-            <% else %>
-              <li><%= link_to "Cadastre-se", new_user_registration_path %></li>
-              <li><%= link_to "Fazer Login", new_user_session_path %></li>
+                <li><%= link_to "Sair", destroy_user_session_path, method: :delete %> </li>
+                <li><%= link_to "Editar Perfil", edit_user_registration_path %></li>
+              <% else %>
+                <li><%= link_to "Cadastre-se", new_user_registration_path %></li>
+                <li><%= link_to "Fazer Login", new_user_session_path %></li>
             <% end %>
             </ul>
           </div>
@@ -100,7 +101,7 @@
         </div><!--/row-->
 
       <footer>
-        <p>&copy; Company 2014</p>
+        <p>&copy; 2014 Pentatonic Ltd</p>
       </footer>
 
     </div> <!-- /container -->

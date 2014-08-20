@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
   has_many :products, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-  validates_presence_of :name, :nickname, :cpf, :rg, :address, :birth
+  validates_presence_of :name, :nickname, :cpf, :rg, :address, :birth, :city_id
   validates_uniqueness_of :nickname
 end

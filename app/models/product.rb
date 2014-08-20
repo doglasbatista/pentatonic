@@ -5,6 +5,7 @@ class Product < ActiveRecord::Base
   has_many :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
   
+  usar_como_dinheiro :price
   validates :price, :numericality => {:greater_than_or_equal_to => 0.00}
   has_attached_file :cover, :styles => {:small => "100*100"}
   #validates_attachment_presence :cover

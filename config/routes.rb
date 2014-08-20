@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "/cities_by_state" => "cities#cities_by_state"
   get 'welcome/index'
   get 'welcome/aboutUs'
+  get 'welcome/checkout'
 
   devise_for :users, controllers: {registrations: 'registrations'}
   # The priority is based upon order of creation: first created -> highest priority.

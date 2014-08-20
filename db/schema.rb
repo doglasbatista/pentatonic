@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20140815215714) do
 
   create_table "products", force: true do |t|
     t.string   "title"
-    t.decimal  "price",              precision: 10, scale: 0
+    t.decimal  "price",              precision: 14, scale: 2
     t.text     "description"
     t.integer  "style_id"
     t.integer  "category_id"
