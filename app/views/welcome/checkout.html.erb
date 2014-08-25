@@ -1,0 +1,12 @@
+<h2>Finalizar compra</h2>
+
+<p>Confira os seus dados abaixo para finalizar a compra.<br/><br/></p>
+
+<%= form_for @order, :url => { :action => "save" } do |f| %>
+
+<% @user = current_user %>
+
+<%= @user.name %>
+
+<%= f.submit "Finalizar", :class => "submit" %>
+<% end %>

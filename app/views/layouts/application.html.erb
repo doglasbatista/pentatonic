@@ -38,26 +38,24 @@
   </head>
   <body>
 
-    <div class="navbar navbar" style="position: fixed; width: 100%;">
+    <div class="navbar navbar navbar-fix-top" style="position: fixed; width: 100%;">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
 
           </a>
-          <%= link_to "Pentatonic", welcome_path, :class => 'brand' %>
+          <%= link_to "Pentatonic", welcome_index_path, :class => 'brand' %>
           <div class="container nav-collapse">
             <ul class="nav">
               <li><%= link_to "Produtos", products_path  %></li>
               <li><%= link_to "Seu Carrinho", current_cart %></li>
               <li><%= render 'products/search' %></li>
               <% if current_user %>
+                <li><p>Bem vindo <%= current_user.nickname %></p></li>
+                <li><%= link_to "Meus Produtos", welcome_myProducts_path %></li>
                 <li><%= link_to "Sair", destroy_user_session_path, method: :delete %> </li>
                 <li><%= link_to "Editar Perfil", edit_user_registration_path %></li>
               <% else %>

@@ -4,6 +4,7 @@
 </div>
 
 <dl class="dl-horizontal">
+
   <dt><strong><%= model_class.human_attribute_name(:cover) %>:</strong></dt>
   <dd><%= image_tag @product.cover(:small) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
@@ -27,6 +28,8 @@
  end %>
  <% if mostrar %>
   <%= button_to 'Adicionar ao carrinho', line_items_path(product_id: @product), :class => 'btn btn-mini' %>
+ <% else %>
+    <div class="alert alert-success" role="alert">O produto já foi adicionado ao seu carrinho</div>
   <% end %>
 </p>
 

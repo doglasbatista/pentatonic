@@ -1,52 +1,44 @@
 <%- model_class = Product -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
+
 
 
 <h1>
   <% if @search_query.present? %>
     <%= t '.search_results' %>
-  <% else %>
-    <%= t '.title' %>
+  
   <% end %>
 </h1>
 <div class="btn-group">
-  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+  <a class="btn dropdown-toggle" data-toggle="dropdown">
     Ordenar por...
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li><%= link_to 'mais novos', products_path(order: 1) %></li>
-    <li><%= link_to 'menor preco', products_path(order: 2) %></li>
-    <li><%= link_to 'maior preco', products_path(order: 3) %></li>
+    <li><%= link_to 'Mais novos no site', products_path(order: 1) %></li>
+    <li><%= link_to 'Menor Preço', products_path(order: 2) %></li>
+    <li><%= link_to 'Maior Preço', products_path(order: 3) %></li>
   </ul>
 </div>
 <ul>
   
 </ul>
 <table class="table table-striped">
-  <thead>
-    <tr>
-    <th></th>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:price) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:style) %></th>
-      <th><%= model_class.human_attribute_name(:category) %></th>
-      <th><%= model_class.human_attribute_name(:user) %></th>
-      
-    </tr>
-  </thead>
+  
   <tbody>
     <% @products.each do |product| %>
       <tr>
-      <td><%= link_to (image_tag product.cover.url(:small)), product %></td>
-        <td><%= product.title %></td>
+      <td>
+        <div class="entry">
+          <div class="row">
+            <div class="col-xs-6 col-md-3">             
+              <a class="thumbnail" style="width: 200px" <%= link_to (image_tag product.cover.url(:small)), product %>     
+              </a>
+            </div>
+          </div>
+        </div>
+      </td>
+        <td><%= link_to product.title %></td>
         <td><%= number_to_currency(product.price) %></td>
-        <td><%= product.description %></td>
-        <td><%= product.style.name %></td>
-        <td><%= product.category.name %></td>
         <td><%= product.user.name %></td>
         <% if belongs_to_user(product) %>
           <td>
@@ -69,3 +61,4 @@
             new_product_path,
             :class => 'btn btn-primary' %>
 <% end %>
+<%= paginate @products %>

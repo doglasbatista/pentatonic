@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815215714) do
+ActiveRecord::Schema.define(version: 20140821010520) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -41,6 +41,25 @@ ActiveRecord::Schema.define(version: 20140815215714) do
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
+
+  create_table "line_orders", force: true do |t|
+    t.integer "product_id"
+    t.integer "order_id"
+    t.integer "quantity"
+    t.float   "total_price", limit: 24
+  end
+
+  add_index "line_orders", ["order_id"], name: "index_line_orders_on_order_id", using: :btree
+  add_index "line_orders", ["product_id"], name: "index_line_orders_on_product_id", using: :btree
+
+  create_table "orders", force: true do |t|
+    t.integer  "user_id"
+    t.float    "total_price", limit: 24
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "products", force: true do |t|
     t.string   "title"
