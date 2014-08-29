@@ -1,37 +1,37 @@
-<h2>Sign up</h2>
+<h2>Cadastre-se</h2>
 
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>  
   <div class="field">
-    <%= f.label :nickname %><br />
-    <%= f.text_field :nickname, autofocus: false %>
-  </div>
+    <%= f.label :nickname %>
+    <%= f.text_field :nickname, autofocus: false, placeholder: 'Como gostaria de ser chamado' %>
+  </div><br/>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: false, style: 'display: inline-block' %>
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: false, placeholder: "" %>
     <%= error_tag @user, :name %>
-  </div>
+  </div><br/>
 
   <div class="field">
-    <div><%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: false %></div>
-  </div>
+    <div><%= f.label :email %>
+    <%= f.email_field :email, autofocus: false, placeholder: "" %></div>
+  </div><br/>
 
   <div class="field">
-    <%= f.label :state %><br />
+    <%= f.label :state %>
     <%= collection_select(:state ,:id, State.all, :id, :name, :include_blank => 'Selecione um estado') %>
-  </div>
+  </div><br/>
 
   <div class="field">
-  <%= f.label :city %><br />
+  <%= f.label :city %>
   <% if f.object.persisted? %>
    <%= f.select :city_id, City.where(:state_id => f.object.city.state_id).collect { |c| [c.name, c.id] }, { :include_blank => 'Selecione um estado antes' }, {class: "form-control" } %><br />
    <% else %>
-   <%= f.collection_select :city_id, [], :id, :name, { :include_blank => '' }, { class: "form-control"} %>
+   <%= f.collection_select :city_id, [], :id, :name, { :include_blank => '...' }, { class: "form-control"} %>
    <% end -%>
-  </div>  
+  </div><br/>  
   <% if f.object.persisted? %>
     <script>
     $('#state_id').find("option[value=#{f.object.city.state_id}]").attr('selected', true);
@@ -39,27 +39,27 @@
   <% end %>
 
   <div class="field">
-    <div><%= f.label :birth%><br />
+    <div><%= f.label :birth%>
     <%= f.date_select :birth, :start_year => Time.now.year - 100, 
     :end_year => Time.now.year, autofocus: false %></div>
-  </div>
+  </div><br/>
 
-  <div><%= f.label :cpf %><br />
-  <%= f.text_field :cpf, autofocus: false %></div>
+  <div><%= f.label :cpf %>
+  <%= f.text_field :cpf, autofocus: false %></div><br/>
 
-  <div><%= f.label :rg %><br />
-  <%= f.text_field :rg, autofocus: false %></div>
+  <div><%= f.label :rg %>
+  <%= f.text_field :rg, autofocus: false %></div><br/>
 
-  <div><%= f.label :address %><br />
-  <%= f.text_field :address, autofocus: false %></div>
+  <div><%= f.label :address %>
+  <%= f.text_field :address, autofocus: false %></div><br/>
 
-  <div><%= f.label :description %><br />
-  <%= f.text_area :description, autofocus: false %></div>
+  <div><%= f.label :description %>
+  <%= f.text_area :description, autofocus: false %></div><br/>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password, autocomplete: "off" %></div>
+  <div><%= f.label :password %>
+  <%= f.password_field :password, autocomplete: "off" %></div><br/>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
   <div><%= f.submit "Sign up" %></div>

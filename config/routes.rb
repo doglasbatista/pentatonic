@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'welcome/checkout'
   post 'welcome/save'
   get 'welcome/myProducts'
+  get '/user_products/:id' => 'welcome#products'
 
   devise_for :users, controllers: {registrations: 'registrations'}
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,11 +1,21 @@
 class ProductsController < ApplicationController
+ 
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :require_authentication, only: [:new, :edit, :create, :update, :destroy]
+  before_action :can_edit, only: [:edit, :update, :destroy]
+
   def require_authentication
     unless current_user
-      redirect_to new_user_session_path, alert: 'Precisa esta logado!'
+      redirect_to new_user_session_path, alert: 'Você precisa esta logado!'
     end
   end
+
+  def can_edit
+    if current_user != @product.user
+      redirect_to root_path, alert: 'Permissão negada!'
+    end
+  end
+
   def require_no_authentication
     if current_user
       redirect_to root_path,
@@ -72,22 +82,19 @@ end
 
 def update
   @product = current_user.products.find(params[:id])
+
   if @product.update(product_params)
     redirect_to @product, notice: 'Produto atualizado.' 
   else
-    render :show
+    render :edit
   end
 end
 
 
 def destroy
-  if @product.destroy
-    @product = current_user.products.find(params[:id])
-    @product.destroy
-    redirect_to products_url
-  else
-    redirect_to :back, notice: "Seu TROUXA"
-  end
+  @product = current_user.products.find(params[:id])
+  @product.destroy
+  redirect_to products_url, notice: 'Produto deletado com sucesso'
 end
 
 private 

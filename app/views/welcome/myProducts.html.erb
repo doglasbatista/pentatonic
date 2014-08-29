@@ -1,13 +1,25 @@
-<h1>Meus produtos</h1>
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="../../assets/photo.css">
+</head>
+<body>
 
-<% cache ['store', Product.last] do %>
-  <% @products.each do |product| %>
-    <% cache ['entry', product] do %>
-      <div class="entry">
-        <%= link_to (image_tag product.cover.url(:small)), product %>
-        <h3><%= product.title %></h3>
-          <span class="price"><%= number_to_currency(product.price) %> </span>
-      </div>
-    <% end %>
+  <% cache ['store', Product.last] do %>
+    <div>    
+    <ul id="photo-album" style="display: block;">
+      <% @products.each do |product| %>
+        <% cache ['entry', product] do %>
+          <li><%= link_to (image_tag product.cover.url(:small)), product %><%= product.title %></li>
+                
+        <% end %>
+      <% end %>
+    </ul>
+    </div>
   <% end %>
-<% end %>
+  <%= link_to 'Cadastrar nova vídeo aula',
+            new_product_path,
+            :class => 'btn btn-primary' %>
+</body>
+</html>
+

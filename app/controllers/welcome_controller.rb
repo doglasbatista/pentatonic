@@ -2,11 +2,16 @@ class WelcomeController < ApplicationController
   include CurrentCart
 
   def index
-    @products = Product.search(@search_query).order("id desc").page(params[:page]).per(5)
+    @products = Product.search(@search_query).order("id desc").page(params[:page]).per(20)
   end
 
-  def myProducts
+  def myProducts   
     @products = current_user.products
+  end
+
+  def products
+    user = User.find(params[:id])
+    @products = user.products
   end
 
   def aboutUs

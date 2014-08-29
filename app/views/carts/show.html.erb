@@ -1,10 +1,25 @@
 <ul>
-
-  <% @cart.line_items.each do |item| %>
-    <li><%= item.quantity %> &times; <%= item.product.title %> valor <%= number_to_currency(item.product.price) %> <%= link_to 'Remover', line_item_path(item), method: :delete, :class => 'btn btn-mini' %></li>   
-  <% end %>
-  TOTAL: <%= number_to_currency(@cart.total_price) %>
-  </br><%= link_to 'Continuar comprando', welcome_index_path , :class => 'btn btn-mini' %>
-  <%= link_to 'Esvaziar carrinho', @cart, method: :delete, data: {confirm: 'Tem certeza?'}, :class => 'btn btn-mini'  %>
-    <%= link_to "Finalizar compra", :controller => "welcome", :action => "checkout" %>
+  <table>
+    <tr>
+      <td>quantidade</td>
+      <td>produto</td>
+      <td>valor</td>
+    </tr>
+      <% @cart.line_items.each do |item| %> 
+          <tr>
+            <td><%= item.quantity %></td>
+            <td><%= item.product.title %></td>
+            <td><%= number_to_currency(item.product.price) %></td>
+            <td><%= link_to 'Remover', line_item_path(item), method: :delete, :class => 'btn btn-mini' %></td>
+          </tr>        
+      <% end %>
+    </table>
+    </br></br>TOTAL: <%= number_to_currency(@cart.total_price) %>
+    </br><%= link_to 'Continuar comprando', welcome_index_path, :class => 'btn btn-mini' %>
+    <%= link_to 'Esvaziar carrinho', @cart, method: :delete, data: {confirm: 'Tem certeza?'}, :class => 'btn btn-mini'  %>
+      </br></br><%= link_to "Finalizar compra", welcome_checkout_path, :class => 'btn btn-mini ' %>
 </ul>
+
+
+
+

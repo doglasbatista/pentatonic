@@ -3,8 +3,7 @@ class Product < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
   has_many :line_items
-  before_destroy :ensure_not_referenced_by_any_line_item
-  
+  before_destroy :ensure_not_referenced_by_any_line_item  
   usar_como_dinheiro :price
   validates :price, :numericality => {:greater_than_or_equal_to => 0.00}
   has_attached_file :cover, :styles => {:small => "200x200"}
@@ -30,7 +29,7 @@ class Product < ActiveRecord::Base
       joins(:style).joins(:category).joins(:user).where("products.title LIKE :query OR
         categories.name LIKE :query OR
         styles.name LIKE :query OR
-        users.name LIKE :query OR
+        users.nickname LIKE :query OR
         products.price LIKE :query OR
         products.description LIKE :query", query: "%#{query}%")
     else
