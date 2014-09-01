@@ -37,7 +37,7 @@ $('#state_id').find("option[value=#{f.object.city.state_id}]").attr('selected', 
 
   <div class="field">
     <div><%= f.label :birth%>
-    <%= f.date_select :birth, :start_year => Time.now.year - 100, 
+    <%= f.date_select :birth , :start_year => Time.now.year - 100, 
     :end_year => Time.now.year, autofocus: false %></div>
   </div>
 

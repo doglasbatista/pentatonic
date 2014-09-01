@@ -23,21 +23,3 @@
     <%= link_to "Entrar com #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
   <% end -%>
 <% end -%>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-   $("#state_id").change(function() {
-      getCitiesByState("id="+$("#state_id").val());
-    });
-  });
-
-  function getCitiesByState(id) {
-    $.getJSON("/cities_by_state", id, function(j) {
-      var options = '<option value="">SELECT A CITY</option>';
-      $.each(j.cty, function(i, item) {
-        options += '<option value="' + item.id + '">' + item.n + '</option>';
-      });
-      $("#user_city_id").html(options);
-    });
-  }
-</script>

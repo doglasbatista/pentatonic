@@ -1,23 +1,39 @@
 <ul>
-  <table>
+  <table class="table table-striped" style="width: 800px;">
     <tr>
-      <td>quantidade</td>
-      <td>produto</td>
-      <td>valor</td>
+      <th></th>
+      <th>quantidade</th>
+      <th>produto</th>
+      <th>valor</th>
+      <th></th>
     </tr>
       <% @cart.line_items.each do |item| %> 
           <tr>
+            <td><%= image_tag(item.product.cover.url(:small)) %></td>
             <td><%= item.quantity %></td>
             <td><%= item.product.title %></td>
             <td><%= number_to_currency(item.product.price) %></td>
-            <td><%= link_to 'Remover', line_item_path(item), method: :delete, :class => 'btn btn-mini' %></td>
+            <td><%= link_to 'Remover', line_item_path(item), method: :delete, :class => 'btn btn-mini'  %></td>
           </tr>        
       <% end %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>TOTAL:</td>
+        <td><%= number_to_currency(@cart.total_price) %></td>
+        <td><%= link_to 'Esvaziar carrinho', @cart, method: :delete, data: {confirm: 'Tem certeza?'}, :class => 'btn btn-mini'  %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><%= link_to "Finalizar compra", welcome_checkout_path, :class => 'btn btn-mini btn-danger ' %></td>
+      </tr>
     </table>
-    </br></br>TOTAL: <%= number_to_currency(@cart.total_price) %>
     </br><%= link_to 'Continuar comprando', welcome_index_path, :class => 'btn btn-mini' %>
-    <%= link_to 'Esvaziar carrinho', @cart, method: :delete, data: {confirm: 'Tem certeza?'}, :class => 'btn btn-mini'  %>
-      </br></br><%= link_to "Finalizar compra", welcome_checkout_path, :class => 'btn btn-mini ' %>
+    
+      </br></br>
 </ul>
 
 

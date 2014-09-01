@@ -4,22 +4,46 @@
   <link rel="stylesheet" href="../../assets/photo.css">
 </head>
 <body>
-
+  <legend>
+      <h2>Meus Produtos</h2>
+    </legend>
   <% cache ['store', Product.last] do %>
     <div>    
-    <ul id="photo-album" style="display: block;">
+    <table class="table table-striped">
+
       <% @products.each do |product| %>
         <% cache ['entry', product] do %>
-          <li><%= link_to (image_tag product.cover.url(:small)), product %><%= product.title %></li>
-                
+          <tr>
+      <td>
+        <div class="entry">
+          <div class="row">
+            <div class="col-xs-6 col-md-3">             
+              <a class="thumbnail" style="width: 200px" <%= link_to (image_tag product.cover.url(:medium)), product %>     
+              </a>
+            </div>
+          </div>
+        </div>
+      </td>
+        <td><%= link_to product.title, product %></td>
+        <td><%= number_to_currency(product.price) %></td>
+        <td><%= link_to product.user.nickname, "/user_products/#{product.user.id}" %></td>
+        <% if belongs_to_user(product) %>
+          <td>
+            <%= link_to 'Editar', edit_product_path(product), :class => 'btn btn-mini' %>
+            <%= link_to 'Deletar', product_path(product),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Tem certeza?
+                          ')) },
+                        :class => 'btn btn-mini btn-danger' %>
+          </td>
+        <% end -%>
+      </tr>     
         <% end %>
       <% end %>
-    </ul>
+    </table>
     </div>
   <% end %>
-  <%= link_to 'Cadastrar nova vídeo aula',
-            new_product_path,
-            :class => 'btn btn-primary' %>
+  <%= link_to 'Cadastrar nova vídeo aula', new_product_path, :class => 'btn btn-primary' %>
 </body>
 </html>
 

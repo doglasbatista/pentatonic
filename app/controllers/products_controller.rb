@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     file_path = @product.file_file_name
     if !file_path.nil?
-     send_file "#{Rails.root}/public/system/file/#{@product.id}/original/#{file_path}", :x_sendfile => true 
+     send_file "#{Rails.root}/public/system/files/#{@product.id}/original/#{file_path}", :x_sendfile => true 
    else 
      redirect_to products_url
    end
@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
   elsif order == 3
     @products = Product.search(@search_query).order("price desc").page(params[:page]).per(5)
   else
-    @products = Product.search(@search_query).order("title").page(params[:page]).per(5)
+    @products = Product.search(@search_query).order("id").page(params[:page]).per(5)
   end
 
 end

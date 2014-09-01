@@ -54,6 +54,7 @@
         file: Arquivo
         description: Descrição
         cover: Foto
+        user: Usuário
 
   helpers:
     submit:
