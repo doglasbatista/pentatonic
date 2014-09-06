@@ -1,11 +1,10 @@
 <h2>Cadastre-se</h2>
 
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>  
   <div class="field">
     <%= f.label :nickname %>
     <%= f.text_field :nickname, autofocus: false, placeholder: 'Como gostaria de ser chamado' %>
+    <%= error_tag @user, :nickname %>
   </div><br/>
 
   <div class="field">
@@ -15,13 +14,15 @@
   </div><br/>
 
   <div class="field">
-    <div><%= f.label :email %>
-    <%= f.email_field :email, autofocus: false, placeholder: "" %></div>
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: false, placeholder: "" %>
+    <%= error_tag @user, :email %>
   </div><br/>
 
   <div class="field">
     <%= f.label :state %>
     <%= collection_select(:state ,:id, State.all, :id, :name, :include_blank => 'Selecione um estado') %>
+    <%= error_tag @user, :state %>
   </div><br/>
 
   <div class="field">
@@ -31,6 +32,7 @@
    <% else %>
    <%= f.collection_select :city_id, [], :id, :name, { :include_blank => '...' }, { class: "form-control"} %>
    <% end -%>
+   <%= error_tag @user, :city %>
   </div><br/>  
   <% if f.object.persisted? %>
     <script>
@@ -39,30 +41,51 @@
   <% end %>
 
   <div class="field">
-    <div><%= f.label :birth%>
+    <%= f.label :birth%>
     <%= f.date_select :birth, :start_year => Time.now.year - 100, 
-    :end_year => Time.now.year, autofocus: false %></div>
+    :end_year => Time.now.year, autofocus: false %>
+    <%= error_tag @user, :birth %>
+  </div><br/>
+ 
+  <div>
+    <%= f.label :cpf %>
+    <%= f.text_field :cpf, autofocus: false %>
+    <%= error_tag @user, :cpf %>
   </div><br/>
 
-  <div><%= f.label :cpf %>
-  <%= f.text_field :cpf, autofocus: false %></div><br/>
+  <div>
+    <%= f.label :rg %>
+    <%= f.text_field :rg, autofocus: false %>
+    <%= error_tag @user, :rg %>
+  </div><br/>
 
-  <div><%= f.label :rg %>
-  <%= f.text_field :rg, autofocus: false %></div><br/>
+  <div>
+    <%= f.label :address %>
+    <%= f.text_field :address, autofocus: false %>
+    <%= error_tag @user, :address %>
+  </div><br/>
 
-  <div><%= f.label :address %>
-  <%= f.text_field :address, autofocus: false %></div><br/>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description, autofocus: false %>
+    <%= error_tag @user, :description %>
+  </div><br/>
 
-  <div><%= f.label :description %>
-  <%= f.text_area :description, autofocus: false %></div><br/>
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off" %>
+    <%= error_tag @user, :password %>
+  </div><br/>
 
-  <div><%= f.label :password %>
-  <%= f.password_field :password, autocomplete: "off" %></div><br/>
+  <div>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= error_tag @user, :password_confirmation %>
+  </div>
 
-  <div><%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-
-  <div><%= f.submit "Sign up" %></div>
+  <div>
+    <%= f.submit "Finalizar cadastro", :class => 'btn' %>
+  </div>
 <% end %>
 
 

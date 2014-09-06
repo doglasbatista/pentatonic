@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
 
   resources :line_items
-
   resources :carts
-
   resources "products"
+  get "products/file_download/:id" => "products#file_download"
   get "/cities_by_state" => "cities#cities_by_state"
   get 'welcome/index'
   get 'welcome/aboutUs'
-  get 'welcome/checkout'
+  get 'welcome/checkout/:id' => 'welcome#checkout'
+  #get 'welcome/checkout'
   post 'welcome/save'
   get 'welcome/myProducts'
+  get 'welcome/pag'
   get '/user_products/:id' => 'welcome#products'
 
   devise_for :users, controllers: {registrations: 'registrations'}

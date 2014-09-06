@@ -4,11 +4,13 @@
   <link rel="stylesheet" href="../../assets/photo.css">
 </head>
 <body>
+<%= render 'search' %>
   <legend>
       <h2>Meus Produtos</h2>
     </legend>
   <% cache ['store', Product.last] do %>
     <div>    
+
     <table class="table table-striped">
 
       <% @products.each do |product| %>
@@ -18,7 +20,7 @@
         <div class="entry">
           <div class="row">
             <div class="col-xs-6 col-md-3">             
-              <a class="thumbnail" style="width: 200px" <%= link_to (image_tag product.cover.url(:medium)), product %>     
+              <a class="thumbnail" style="width: 100px" <%= link_to (image_tag product.cover.url(:small)), product %>     
               </a>
             </div>
           </div>
@@ -41,9 +43,10 @@
         <% end %>
       <% end %>
     </table>
+    <%= paginate @products %>
     </div>
   <% end %>
-  <%= link_to 'Cadastrar nova vídeo aula', new_product_path, :class => 'btn btn-primary' %>
+  <%= link_to 'Adicionar nova vídeo aula', new_product_path, :class => 'btn btn-primary' %>
 </body>
 </html>
 

@@ -28,7 +28,7 @@
         <td></td>
         <td></td>
         <td></td>
-        <td><%= link_to "Finalizar compra", welcome_checkout_path, :class => 'btn btn-mini btn-danger ' %></td>
+        <td><%= link_to "Finalizar compra", "/welcome/checkout/#{@cart.id}", :class => 'btn btn-mini btn-danger ' %></td>
       </tr>
     </table>
     </br><%= link_to 'Continuar comprando', welcome_index_path, :class => 'btn btn-mini' %>

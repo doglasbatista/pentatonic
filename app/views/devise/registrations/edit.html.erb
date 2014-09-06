@@ -57,16 +57,19 @@ $('#state_id').find("option[value=#{f.object.city.state_id}]").attr('selected', 
     <div>Esperando confirmação do e-mail atual: <%= resource.unconfirmed_email %></div></br>
   <% end %>
 
-  <div><%= f.label :password %> <i>(deixe em branco se não quiser alterar)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %></div><br/>
+  <div><%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off"%></div><br/>
 
   <div><%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div><br/>
 
-  <div><%= f.label :current_password %> <i>(precisamos de sua senha atual para confirmar as alterações)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %></div><br/>
+  <div><%= f.label :current_password %>
+    <%= f.password_field :current_password, autocomplete: "off", placeholder: 'para confirmar as alterações' %></div><br/>
 
-  <div><%= f.submit "Salvar" %></div>
+  <div>
+    <%= f.submit "Salvar", :class => 'btn' %>
+    <%= link_to "Voltar", :back, :class => 'btn btn'%>
+  </div>
 <% end %>
 
-<%= link_to "Voltar", :back %>
+

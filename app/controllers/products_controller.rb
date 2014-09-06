@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
  
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :file_download]
   before_action :require_authentication, only: [:new, :edit, :create, :update, :destroy]
   before_action :can_edit, only: [:edit, :update, :destroy]
 
@@ -24,13 +24,15 @@ class ProductsController < ApplicationController
   end
 
   def file_download
-    @product = Product.find(params[:id])
-    file_path = @product.file_file_name
-    if !file_path.nil?
-     send_file "#{Rails.root}/public/system/files/#{@product.id}/original/#{file_path}", :x_sendfile => true 
-   else 
-     redirect_to products_url
-   end
+
+    send_file "#{@product.file.path}", :x_sendfile=>true
+   #  @product = Product.find(params[:id])
+   #  file_path = @product.file_file_name
+   #  if !file_path.nil?
+   #   send_file "#{Rails.root}/public/system/files/#{@product.id}/original/#{file_path}", :x_sendfile => true 
+   # else 
+   #   redirect_to products_url
+   # end
  end
  
  def index
@@ -84,7 +86,7 @@ def update
   @product = current_user.products.find(params[:id])
 
   if @product.update(product_params)
-    redirect_to @product, notice: 'Produto atualizado.' 
+    redirect_to welcome_myProducts_path, notice: 'Produto atualizado.' 
   else
     render :edit
   end
@@ -94,7 +96,8 @@ end
 def destroy
   @product = current_user.products.find(params[:id])
   @product.destroy
-  redirect_to products_url, notice: 'Produto deletado com sucesso'
+  redirect_to :back, notice: 'Produto deletado com sucesso'
+  #redirect_to products_url, notice: 'Produto deletado com sucesso'
 end
 
 private 

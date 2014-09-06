@@ -1,9 +1,14 @@
+
 source 'https://rubygems.org'
-gem 'brcobranca'
+
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails', '2.2.8'
+gem 'bootstrap_form'
+gem 'aitch'
+gem 'pagseguro-oficial', git: "git://github.com/pagseguro/ruby.git"
 gem 'brazilian-rails'
-gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem "twitter-bootstrap-rails"
+
 gem 'kaminari'
 gem 'paperclip'
 gem 'devise'

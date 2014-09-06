@@ -4,9 +4,10 @@ class Product < ActiveRecord::Base
   belongs_to :user
   has_many :line_items
   before_destroy :ensure_not_referenced_by_any_line_item  
-  usar_como_dinheiro :price
-  validates :price, :numericality => {:greater_than_or_equal_to => 0.00}
-  has_attached_file :cover, :styles => {:small => "100*50", :medium => '200x200'}
+  validates_presence_of :title, :price, :description, :style_id, :category_id, :cover, :file
+  #usar_como_dinheiro :price
+  #validates :price, :numericality => {:greater_than_or_equal_to => 0.00}
+  has_attached_file :cover, :styles => {:small => "100*50", :medium => '150*150'}
   #validates_attachment_presence :cover
   validates_attachment_content_type :cover, :content_type => [ 'image/png','image/jpeg','image/jpeg']
 

@@ -1,9 +1,9 @@
 <script type="text/javascript">
   $(document).ready(function() {
    $("#state_id").change(function() {
-      getCitiesByState("id="+$("#state_id").val());
-    });
+    getCitiesByState("id="+$("#state_id").val());
   });
+ });
 
   function getCitiesByState(id) {
     $.getJSON("/cities_by_state", id, function(j) {
@@ -14,4 +14,22 @@
       $("#user_city_id").html(options);
     });
   }
+
+  function mascaraData(campoData){
+    var data = campoData.value;
+    if (data.length == 2){
+      data = data + '/';
+      document.forms[0].data.value = data;
+      return true;              
+    }
+    if (data.length == 5){
+      data = data + '/';
+      document.forms[0].data.value = data;
+      return true;
+    }
+  }
+
+
+
+
 </script>
