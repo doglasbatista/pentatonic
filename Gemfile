@@ -7,7 +7,7 @@ group :production do
 end
 
 group :development do
-  gem 'mysql2'
+  gem 'pg'
 end
 
 gem 'rails_log_stdout', github: 'heroku/rails_log_stdout'
