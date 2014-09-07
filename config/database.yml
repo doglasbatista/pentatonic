@@ -46,9 +46,9 @@ test:
 #
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
-
+#
 production:
-  adapter: postgresql
-  host: localhost
-  username: user
-  database: app-dev
+  <<: *default
+  database: pentatonic_production
+  username: pentatonic
+  password: <%= ENV['PENTATONIC_DATABASE_PASSWORD'] %>
