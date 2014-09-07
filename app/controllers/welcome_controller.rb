@@ -58,8 +58,8 @@ end
           
 
         payment.reference         = order.id
-        payment.notification_url  = "http://pentatonic.com.br/?notification"
-        payment.redirect_url      = "http://pentatonic.com.br/?redirect"
+        payment.notification_url  = "http://104.131.58.109:3000/notification"
+        payment.redirect_url      = "http://104.131.58.109:3000/redirect"
 
         order.line_order.each do |product|
           payment.items << PagSeguro::Item.new({

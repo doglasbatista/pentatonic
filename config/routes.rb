@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'welcome/pag'
   get '/user_products/:id' => 'welcome#products'
 
+  post '/notification' => 'notifications#create'
+
   devise_for :users, controllers: {registrations: 'registrations'}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
