@@ -35,7 +35,7 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'pentatonic.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'http://pentatonic.herokuapp.com/' }
   config.action_mailer.delivery_method = :smtp
   # change to true to allow email to be sent during development
   # config.action_mailer.perform_deliveries = false
@@ -45,7 +45,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
-    :domain               => "gmail.com",
+    :domain               => "http://pentatonic.herokuapp.com/",
     :authentication       => "plain",
     :user_name            => "officialpentatonic@gmail.com",
     :password             => "penta321!",
