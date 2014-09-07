@@ -35,7 +35,7 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'pentatonic.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   # change to true to allow email to be sent during development
   # config.action_mailer.perform_deliveries = false
