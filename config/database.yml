@@ -10,11 +10,12 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
 default: &default
-  adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  adapter: mysql2
+  encoding: utf8
   pool: 5
+  username: root
+  password: root
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
@@ -49,3 +50,5 @@ test:
 production:
   <<: *default
   database: pentatonic_production
+  username: pentatonic
+  password: <%= ENV['PENTATONIC_DATABASE_PASSWORD'] %>
