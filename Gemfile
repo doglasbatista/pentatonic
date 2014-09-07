@@ -10,6 +10,8 @@ group :development do
   gem 'mysql2'
 end
 
+gem 'rails_log_stdout', github: 'heroku/rails_log_stdout'
+gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', '2.2.8'
