@@ -10,6 +10,6 @@ class NotificationsController < ApplicationController
       # biblioteca Sidekiq.
     end
 
-    render nothing: true, status: 200
+    render :text => "ok", status: 200
   end
 end
