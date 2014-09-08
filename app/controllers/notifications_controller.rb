@@ -4,6 +4,10 @@ class NotificationsController < ApplicationController
   def create
     transaction = PagSeguro::Transaction.find_by_notification_code(params[:notificationCode])
 
+    logger.debug transaction
+
+    logger.debug params
+
     if transaction.errors.empty?
       # Processa a notificação. A melhor maneira de se fazer isso é realizar
       # o processamento em background. Uma boa alternativa para isso é a
