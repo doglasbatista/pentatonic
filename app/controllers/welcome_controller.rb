@@ -115,6 +115,6 @@ end
 
   def down_prod
     @order          = Order.new
-    order           = Order.find(params[:id])    
+    @order           = Order.find(params[:id])    
   end
 end
