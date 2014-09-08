@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   resources :line_items
   resources :carts
-  resources "products"
+  resources :products
+  resources :notifications
+
   get "products/file_download/:id" => "products#file_download"
   get "/cities_by_state" => "cities#cities_by_state"
   get 'welcome/index'
