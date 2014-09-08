@@ -35,16 +35,16 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => '104.131.58.109:3000' }
-  config.action_mailer.delivery_method = :smtp
   # change to true to allow email to be sent during development
   # config.action_mailer.perform_deliveries = false
   # config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.default :charset => "utf-8"
 
+  config.action_mailer.default_url_options = { :host => '104.131.58.109:3000' }
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
-    :port                 => 587,
+    :port                 => 25,
     :domain               => "104.131.58.109:3000",
     :authentication       => "plain",
     :user_name            => "officialpentatonic@gmail.com",
