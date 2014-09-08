@@ -28,9 +28,9 @@ class WelcomeController < ApplicationController
    if @order.save
      current_cart.line_items.each do |i| 
       i.destroy
-    end
+     end
     flash[:notice] = "Obrigado por sua compra." 
-    redirect_to '/'#welcome_index_path    
+    redirect_to '/welcome/down_prod/order.id'    
   else
     render :action => "checkout"
   end
@@ -111,5 +111,9 @@ end
     end
 
     redirect_to welcome_save_path #render :text => transaction.errors.join("<br>"), status: 200
+  end
+
+  def down_prod
+    order           = Order.find(params[:id])    
   end
 end

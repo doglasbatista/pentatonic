@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'welcome/myProducts'
   get 'welcome/pag'
   get '/user_products/:id' => 'welcome#products'
+  get '/welcome/down_prod/:id' => 'welcome#down_prod'
 
   post '/notification' => 'welcome#notification'
   get '/redirect/:id' => 'welcome#redirect'
