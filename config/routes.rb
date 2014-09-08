@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   get 'welcome/pag'
   get '/user_products/:id' => 'welcome#products'
 
-  post '/notification' => 'notifications#create'
+  post '/notification' => 'welcome#notification'
+  get '/redirect' => 'welcome#redirect'
 
   devise_for :users, controllers: {registrations: 'registrations'}
   # The priority is based upon order of creation: first created -> highest priority.

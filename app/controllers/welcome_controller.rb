@@ -81,4 +81,33 @@ end
       end
     end
   end
+
+
+  def notification
+    transaction = PagSeguro::Transaction.find_by_notification_code(params[:notificationCode])
+
+    logger.info "Mahh oiii"
+
+    if transaction.errors.empty?
+      # Processa a notificação. A melhor maneira de se fazer isso é realizar
+      # o processamento em background. Uma boa alternativa para isso é a
+      # biblioteca Sidekiq.
+    end
+
+    render :text => "ok", status: 200
+  end
+
+
+  def redirect
+    transaction = PagSeguro::Transaction.find_by_notification_code(params[:transaction_id])
+
+
+    if transaction.errors.empty?
+      # Processa a notificação. A melhor maneira de se fazer isso é realizar
+      # o processamento em background. Uma boa alternativa para isso é a
+      # biblioteca Sidekiq.
+    end
+
+    render :text => transaction.errors.join("<br>"), status: 200
+  end
 end
