@@ -21,7 +21,7 @@ class WelcomeController < ApplicationController
   end
   
   def save
-   @order = Order.find(params[:id])#Order.new
+   @order = Order.new
    @order.user_id = current_user.id
    @order.total_price = current_cart.total_price
    @order.add_line_order_from_cart(current_cart)
