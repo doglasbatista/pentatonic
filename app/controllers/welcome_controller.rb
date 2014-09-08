@@ -109,6 +109,6 @@ end
       # biblioteca Sidekiq.
     end
 
-    render :text => transaction.errors.join("<br>"), status: 200
+    render :save #:text => transaction.errors.join("<br>"), status: 200
   end
 end
