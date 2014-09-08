@@ -109,6 +109,6 @@ end
       # biblioteca Sidekiq.
     end
 
-    render :save #:text => transaction.errors.join("<br>"), status: 200
+    redirect_to welcome_save_path #render :text => transaction.errors.join("<br>"), status: 200
   end
 end
