@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  skip_before_filter :verify_authenticity_token, only: :notification
+  skip_before_filter :verify_authenticity_token, only: :redirect
   include CurrentCart
 
   def index
