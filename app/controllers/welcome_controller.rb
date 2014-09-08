@@ -30,7 +30,7 @@ class WelcomeController < ApplicationController
       i.destroy
      end
     flash[:notice] = "Obrigado por sua compra." 
-    redirect_to '/welcome/down_prod/@order.id'    
+    redirect_to '/welcome/down_prod/@order'    
   else
     render :action => "checkout"
   end
