@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
 
     logger.info transaction
 
-    logger.info params
+    logger.info "Mahh oiii"
 
     if transaction.errors.empty?
       # Processa a notificação. A melhor maneira de se fazer isso é realizar
