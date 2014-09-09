@@ -43,12 +43,12 @@ Rails.application.configure do
   # config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :domain => "gmail.com",
-    :authentication => "plain",
-    :user_name => "doglasbatista@gmail.com",
-    :password => "batistasilva",
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => "gmail.com",
+    :authentication       => "plain",
+    :user_name            => "doglasbatista@gmail.com",
+    :password             => "batistasilva",
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
