@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :carts
   resources :products
   resources :notifications
-
+  resources :orders
+  resources :line_orders
+  #get 'orders/index'
   get "products/file_download/:id" => "products#file_download"
   get "/cities_by_state" => "cities#cities_by_state"
   get 'welcome/index'
