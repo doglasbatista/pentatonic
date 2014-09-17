@@ -55,7 +55,7 @@ end
 
         order.add_line_order_from_cart(cart)
         order.save
-        logger.info "Mahh oiii"
+        flash[:alert] = "Seu carrinho de compras está vazio"
 
         payment = PagSeguro::PaymentRequest.new(email: 'doglasbatista@hotmail.com', token: '674953965F0B439DA05B70EF971F9E10')
           
