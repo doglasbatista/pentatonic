@@ -159,10 +159,10 @@ end
       # o processamento em background. Uma boa alternativa para isso é a
       # biblioteca Sidekiq.
     end
-    current_cart.line_items.each do |i| 
-      i.destroy
+    # current_cart.line_items.each do |i| 
+    #   i.destroy
     end
-    #redirect_to welcome_index_path#{}"/welcome/down_prod/order/#{@order.id}"
+    redirect_to welcome_index_path#{}"/welcome/down_prod/order/#{@order.id}"
   end
 
   def down_prod
