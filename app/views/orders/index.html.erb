@@ -1,0 +1,11 @@
+<table class="table table-striped">
+  <tbody>
+    <tr></tr>
+    <tr></tr>
+    <% @order.line_order.each do |line| %>
+      <tr>
+        <td><%= line.id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
