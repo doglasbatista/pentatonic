@@ -30,7 +30,7 @@ class WelcomeController < ApplicationController
       i.destroy
      end
     flash[:notice] = "Obrigado por sua compra." 
-    redirect_to welcome_index_path #{}"/welcome/down_prod/order/#{@order.id}"    
+    redirect_to "/welcome/down_prod/order/#{@order.id}"    
   else
     render :action => "checkout"
   end
@@ -47,12 +47,12 @@ end
         redirect_to :back
       else
         order           = Order.new
-        cart            = Cart.find(params[:id])
+        #cart            = Cart.find(params[:id])
         #order          = Order.first
-        #order          = Order.find(params[:id])
+        order          = Cart.find(params[:id])
         #payment         = PagSeguro::PaymentRequest.new
 
-        order.add_line_order_from_cart(cart)
+        order.add_line_order_from_cart(order)
         order.save
           
 
