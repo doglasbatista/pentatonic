@@ -44,7 +44,7 @@ end
         redirect_to :back
       else
         order           = Order.new
-        order.user      = current_user.id
+        order.user      = current_user
         order.total_price = current_cart.total_price
         cart            = Cart.find(params[:id])
         #order           = Order.first
