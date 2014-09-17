@@ -81,7 +81,7 @@ class WelcomeController < ApplicationController
      current_cart.line_items.each do |i| 
       i.destroy
      end
-     redirect_to welcome_index_pat
+     redirect_to welcome_index_path
      flash[:notice] = "Obrigado por sua compra."     
    else
     render :action => "checkout"
