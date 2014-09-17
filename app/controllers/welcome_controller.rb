@@ -52,7 +52,7 @@ end
         order          = Cart.find(params[:id])
         #payment         = PagSeguro::PaymentRequest.new
 
-        order.add_line_order_from_cart(order)
+        order.add_line_order_from_cart(@order)
         order.save
           
 
