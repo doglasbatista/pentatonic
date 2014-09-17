@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'welcome/aboutUs'
   get 'welcome/checkout/:id' => 'welcome#checkout'
   #get 'welcome/checkout'
-  post 'welcome/save'
+  get 'welcome/save'
   get 'welcome/myProducts'
   get 'welcome/pag'
   get '/user_products/:id' => 'welcome#products'
