@@ -21,10 +21,7 @@ class WelcomeController < ApplicationController
   end
   
   def save
-   @order = Order.new
-   @order.user_id = current_user.id
-   @order.total_price = current_cart.total_price
-   @order.add_line_order_from_cart(current_cart)
+   order = Order.find(params[:id])
    if @order.save
      current_cart.line_items.each do |i| 
       i.destroy
@@ -47,7 +44,8 @@ end
         redirect_to :back
       else
         order           = Order.new
-        order.user      = current_user
+        order.user      = current_user.id
+        order.total_price = current_cart.total_price
         cart            = Cart.find(params[:id])
         #order           = Order.first
         #order           = Cart.find(params[:id])
@@ -62,7 +60,7 @@ end
 
         payment.reference         = order.id
         payment.notification_url  = "http://104.131.58.109:3000/notification"
-        payment.redirect_url      = "http://104.131.58.109:3000/redirect/#{@order}"
+        payment.redirect_url      = "http://104.131.58.109:3000/redirect/#{@order.id}"
 
         order.line_order.each do |product|
           payment.items << PagSeguro::Item.new({
@@ -110,8 +108,10 @@ end
       # o processamento em background. Uma boa alternativa para isso é a
       # biblioteca Sidekiq.
     end
-
-    redirect_to welcome_save_path #render :text => transaction.errors.join("<br>"), status: 200
+    current_cart.line_items.each do |i| 
+      i.destroy
+    end
+    redirect_to welcome_index_path#{}"/welcome/down_prod/order/#{@order.id}"
   end
 
   def down_prod
