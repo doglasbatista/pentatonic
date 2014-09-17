@@ -47,9 +47,10 @@ end
         redirect_to :back
       else
         order           = Order.new
+        order.user      = current_user
         cart            = Cart.find(params[:id])
-        #order          = Order.first
-        order          = Cart.find(params[:id])
+        #order           = Order.first
+        #order           = Cart.find(params[:id])
         #payment         = PagSeguro::PaymentRequest.new
 
         order.add_line_order_from_cart(cart)
@@ -61,7 +62,7 @@ end
 
         payment.reference         = order.id
         payment.notification_url  = "http://104.131.58.109:3000/notification"
-        payment.redirect_url      = "http://104.131.58.109:3000/redirect/#{@order.id}"
+        payment.redirect_url      = "http://104.131.58.109:3000/redirect/#{@order}"
 
         order.line_order.each do |product|
           payment.items << PagSeguro::Item.new({
