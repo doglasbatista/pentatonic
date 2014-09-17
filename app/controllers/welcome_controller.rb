@@ -60,7 +60,7 @@ end
 
         payment.reference         = order.id
         payment.notification_url  = "http://104.131.58.109:3000/notification"
-        payment.redirect_url      = "http://104.131.58.109:3000/redirect/#{@order.id}"
+        payment.redirect_url      = "http://104.131.58.109:3000/redirect/#{order.id}"
 
         order.line_order.each do |product|
           payment.items << PagSeguro::Item.new({
