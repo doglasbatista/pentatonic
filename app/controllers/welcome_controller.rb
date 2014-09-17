@@ -42,8 +42,7 @@ class WelcomeController < ApplicationController
 
         order.add_line_order_from_cart(cart)
         order.save
-        flash[:alert] = "Seu carrinho de compras está vazio"
-
+        logger.info "Mahh oiii"
         payment = PagSeguro::PaymentRequest.new(email: 'doglasbatista@hotmail.com', token: '674953965F0B439DA05B70EF971F9E10')
           
 
