@@ -162,7 +162,7 @@ end
     # current_cart.line_items.each do |i| 
     #   i.destroy
     # end
-    redirect_to welcome_index_path#{}"/welcome/down_prod/order/#{@order.id}"
+    redirect_to welcome_save_path#{}"/welcome/down_prod/order/#{@order.id}"
   end
 
   def down_prod
