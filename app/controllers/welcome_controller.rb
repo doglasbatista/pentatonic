@@ -106,7 +106,6 @@ def checkout
 
         order.add_line_order_from_cart(cart)
         # order.save
-        logger.info "Mahh oiii"
         payment = PagSeguro::PaymentRequest.new(email: 'doglasbatista@hotmail.com', token: '674953965F0B439DA05B70EF971F9E10')
           
 
@@ -124,7 +123,12 @@ def checkout
         end
 
         #payment.items = items
-        response      = payment.register
+        begin
+          response      = payment.register
+        rescue
+          redirect_to :back
+        end
+        
 
         if response.errors.any?
           raise response.errors.join("\n")
