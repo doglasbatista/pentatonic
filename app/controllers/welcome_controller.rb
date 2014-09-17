@@ -20,18 +20,7 @@ class WelcomeController < ApplicationController
   def aboutUs
   end
   
-  def save
-   order = Order.find(params[:id])
-   if @order.save
-     current_cart.line_items.each do |i| 
-      i.destroy
-     end
-    flash[:notice] = "Obrigado por sua compra." 
-    redirect_to welcome_index_path#{}"/welcome/down_prod/order/#{@order.id}"    
-  else
-    render :action => "checkout"
-  end
-end
+  
 
   def checkout
     unless current_user
