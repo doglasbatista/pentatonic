@@ -81,7 +81,7 @@ class WelcomeController < ApplicationController
      current_cart.line_items.each do |i| 
       i.destroy
      end
-      redirect_to root_path #welcome_index_path
+      redirect_to "/welcome/down_prod/order/#{@order.id}"
      flash[:notice] = "Obrigado por sua compra."     
    else
     render :action => "checkout"
@@ -124,7 +124,7 @@ def checkout
 
         #payment.items = items
         begin
-          response      = payment.register
+          response = payment.register
         rescue
           redirect_to :back
         end
