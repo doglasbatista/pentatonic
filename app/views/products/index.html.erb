@@ -19,7 +19,17 @@
     <li><%= link_to 'Maior Preço', products_path(order: 3,q: params[:q]) %></li>
   </ul>
 </div>
-
+<div class="btn-group clearfix">
+  <a class="btn dropdown-toggle" data-toggle="dropdown" >
+    Estilos...
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu pull-right">
+    <% @products.each do |prod| %>
+      <li><%= prod.title %></li>
+    <% end %>
+  </ul>
+</div>
 
 
 <table class="table table-striped ">
