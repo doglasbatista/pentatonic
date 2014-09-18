@@ -26,13 +26,6 @@ class ProductsController < ApplicationController
   def file_download
 
     send_file "#{@product.file.path}", :x_sendfile=>true
-   #  @product = Product.find(params[:id])
-   #  file_path = @product.file_file_name
-   #  if !file_path.nil?
-   #   send_file "#{Rails.root}/public/system/files/#{@product.id}/original/#{file_path}", :x_sendfile => true 
-   # else 
-   #   redirect_to products_url
-   # end
  end
  
  def index

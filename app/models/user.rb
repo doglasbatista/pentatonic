@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :products, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-  validates_presence_of :name, :nickname, :cpf, :rg, :address, :birth, :city_id, :password_confirmation, :description
+  validates_presence_of :name, :nickname, :cpf, :rg, :address, :birth, :city, :password_confirmation, :description
   validates_uniqueness_of :nickname
   # validate :password_complexity
   # def password_complexity
