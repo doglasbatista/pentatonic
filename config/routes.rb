@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "/cities_by_state" => "cities#cities_by_state"
   get 'welcome/index'
   get 'welcome/aboutUs'
+  get 'welcome/security'
   get 'welcome/checkout/:id' => 'welcome#checkout'
   #get 'welcome/checkout'
   get 'welcome/save'

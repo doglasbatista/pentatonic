@@ -1,3 +1,7 @@
-  <% @order.line_order.each do |i| %>
-    <p><%= link_to i.product.title, "/products/file_download/#{i.product.id}" %></p>
-  <% end %>
+<legend>
+  Faça o download dos seus produtos
+</legend>
+
+<% @order.line_order.each do |i| %>
+  <p><%= link_to i.product.title, "/products/file_download/#{i.product.id}" %></p>
+<% end %>
