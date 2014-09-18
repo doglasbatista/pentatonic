@@ -1,3 +1,3 @@
-  <%= @order.line_orders.each do |i| %>
+  <%= @order.line_order.each do |i| %>
     <p><%= link_to i.product.title , "/products/file_download/#{@product.id}" %><p>
   <% end %>
