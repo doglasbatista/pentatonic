@@ -21,6 +21,7 @@ class WelcomeController < ApplicationController
   end
   def security
   end
+  
 
   def save
    @order = Order.new
