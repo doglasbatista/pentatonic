@@ -59,6 +59,7 @@
               <li><%= render 'products/search' %></li>
               <% if current_user %>
                 <li><%= link_to "Meus Produtos", welcome_myProducts_path %></li>
+                <li><%= link_to "Minhas Compras", welcome_my_orders_path %></li>
                 <li><%= link_to "Sair", destroy_user_session_path, method: :delete %> </li>
                 <li><%= link_to "Editar Perfil", edit_user_registration_path %></li>
               <% else %>

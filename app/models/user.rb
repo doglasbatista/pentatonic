@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   belongs_to :city
   belongs_to :state
   has_many :products, dependent: :destroy
+  has_many :orders
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   validates_presence_of :name, :nickname, :cpf, :rg, :address, :birth, :city, :password_confirmation, :description

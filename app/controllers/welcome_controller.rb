@@ -8,13 +8,16 @@ class WelcomeController < ApplicationController
 
   def myProducts   
     @search_query = params[:q]
-
-    @products = current_user.products.search(@search_query).order('id desc').page(params[:page]).per(2)
+    if current_user
+      @products = current_user.products.search(@search_query).order('id desc').page(params[:page]).per(2)
+    else
+      redirect_to :back
+    end
   end
 
   def products
-    user = User.find(params[:id])
-    @products = user.products
+    @user = User.find(params[:id])
+    @products = @user.products
   end
 
   def aboutUs
@@ -115,13 +118,21 @@ end
       # o processamento em background. Uma boa alternativa para isso é a
       # biblioteca Sidekiq.
     end
-    # current_cart.line_items.each do |i| 
-    #   i.destroy
-    # end
-    redirect_to welcome_save_path#{}"/welcome/down_prod/order/#{@order.id}"
+    redirect_to welcome_save_path
+  end
+
+  def my_orders
+    if current_user
+      @orders = current_user.orders
+    else
+      redirect_to :back
+    end
   end
 
   def down_prod
-    @order           = Order.find(params[:id]) 
+    @order = Order.find(params[:id])
+    unless current_user && current_user == @order.user
+      redirect_to root_path and return
+    end 
   end
 end
