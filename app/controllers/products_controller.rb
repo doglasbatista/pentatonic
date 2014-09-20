@@ -29,6 +29,7 @@ class ProductsController < ApplicationController
  end
  
  def index
+  @styles = Style.all
   @search_query = params[:q]
 
   order = params[:order]

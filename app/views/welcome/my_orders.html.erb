@@ -1,11 +1,13 @@
 <table class="table table-striped">
     <tr>
-      <th>Código da Venda</th>
-      <th></th>
+      <th>Pedido</th>
+      <th>Data</th>
+      <th>Link</th>
     </tr>
     <% @orders.each do |order| %>
       <tr>
       <td><%= order.id %></td>
+      <td><%= order.created_at.to_date %></td>
       <td><%= link_to "Download", "/welcome/down_prod/order/#{order.id}"%></td>
       </tr>
     <% end %>
