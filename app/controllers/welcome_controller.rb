@@ -11,7 +11,7 @@ class WelcomeController < ApplicationController
     if current_user
       @products = current_user.products.search(@search_query).order('id desc').page(params[:page]).per(2)
     else
-      redirect_to :back
+      redirect_to root_path
     end
   end
 
@@ -125,7 +125,7 @@ end
     if current_user
       @orders = current_user.orders
     else
-      redirect_to :back
+      redirect_to root_path
     end
   end
 

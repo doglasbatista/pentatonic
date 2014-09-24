@@ -1,7 +1,12 @@
 <legend>
   Faça o download dos seus produtos
 </legend>
-
-<% @order.line_order.each do |i| %>
-  <p><%= link_to i.product.title, "/products/file_download/#{i.product.id}" %></p>
-<% end %>
+<div>    
+    <ul id="photo-album" style="display: block;">
+      <% @order.line_order.each do |i| %>
+          <li><%= link_to (image_tag i.product.cover.url(:medium)),"/products/file_download/#{i.product.id}" %>
+          <%= i.product.title %>
+          </li>
+      <% end %>
+    </ul>
+    </div>
