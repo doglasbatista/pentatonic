@@ -1,5 +1,9 @@
 <body>
-  <%= @user.name %>
+  <legend>
+    <h2><%= @user.nickname %></h2>
+    <h5><%= @user.email %></h5>
+  </legend>
+  
   <% cache ['store', Product.last] do %>
     <div>    
     <ul id="photo-album" style="display: block;">

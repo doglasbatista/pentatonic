@@ -7,7 +7,7 @@
     <% @orders.each do |order| %>
       <tr>
       <td><%= order.id %></td>
-      <td><%= order.created_at.to_date %></td>
+      <td><%= order.created_at.to_date.strftime('%d/%m/%y') %></td>
       <td><%= link_to "Download", "/welcome/down_prod/order/#{order.id}"%></td>
       </tr>
     <% end %>
