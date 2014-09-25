@@ -18,7 +18,6 @@
   <dd><%= @product.user.name %></dd>
 
 </dl>
-<p><%= link_to 'Download', "/products/file_download/#{@product.id}" %><p>
 <p>
 <% mostrar = true %>
 <% current_cart.line_items.each do |i|

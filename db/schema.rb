@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821010520) do
+ActiveRecord::Schema.define(version: 20140924215339) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -60,6 +60,10 @@ ActiveRecord::Schema.define(version: 20140821010520) do
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "payments", force: true do |t|
+    t.string "name"
+  end
 
   create_table "products", force: true do |t|
     t.string   "title"
