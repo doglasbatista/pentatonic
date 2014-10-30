@@ -1,5 +1,4 @@
-class ProductsController < ApplicationController
- 
+class ProductsController < ApplicationController 
   before_action :set_product, only: [:show, :edit, :update, :destroy, :file_download]
   before_action :require_authentication, only: [:new, :edit, :create, :update, :destroy]
   before_action :can_edit, only: [:edit, :update, :destroy]
@@ -24,7 +23,6 @@ class ProductsController < ApplicationController
   end
 
   def file_download
-
     send_file "#{@product.file.path}", :x_sendfile=>true
  end
  
@@ -65,9 +63,9 @@ def edit
 end
 
 
+
 def create
   @product = current_user.products.build(product_params)
-
   if @product.save
     redirect_to @product, notice: 'Produto cadastrado com sucesso.'
   else
@@ -111,7 +109,6 @@ end
 
 
 def product_params
-  params.
-  require(:product).permit(:title, :price, :description, :style_id, :category_id, :user_id, :cover, :file)
+  params.require(:product).permit(:title, :price, :description, :style_id, :category_id, :user_id, :cover, :file)
 end
 end

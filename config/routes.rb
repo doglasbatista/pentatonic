@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   get 'welcome/security'
   get 'welcome/checkout/:id' => 'welcome#checkout'
   get 'welcome/save'
-  get 'welcome/myProducts'
+  get '/my_products' => "welcome#myProducts"
   get 'welcome/pag'
   get '/user_products/:id' => 'welcome#products'
   get '/welcome/down_prod/order/:id' => 'welcome#down_prod'
-  get 'welcome/my_orders'
+  get 'my_orders' => "welcome#my_orders"
   post '/notification' => 'welcome#notification'
   get '/redirect/:id' => 'welcome#redirect'
 

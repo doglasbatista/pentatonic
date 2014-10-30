@@ -1,3 +1,3 @@
-<%= form_tag welcome_myProducts_path, method: :get, class: 'search' do %>
+<%= form_tag my_products_path, method: :get, class: 'search' do %>
   <%= text_field_tag :q, @search_query, class: 'search-query' , placeholder: 'Buscar por...'  %>
 <% end %>
